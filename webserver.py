@@ -3,7 +3,7 @@ import http
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
-hostName = "10.1.165.3"
+hostName = "10.1.165.2"
 serverPort = 9851
 class myServer(BaseHTTPRequestHandler):  
   def do_GET(self): #the do_GET method is inherited from BaseHTTPRequestHandler 
