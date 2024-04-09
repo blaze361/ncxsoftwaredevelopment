@@ -11,7 +11,7 @@ class myServer(BaseHTTPRequestHandler):
     self.send_header("Content-type", "application/json")
     self.end_headers()
   def do_POST(self):
-    self.send_respose(200)
+    self.send_response(200)
     self.send_header("Content-type", "application/json")
     self.end_headers()
     message = int(self.headers.get("Content-Length"))
