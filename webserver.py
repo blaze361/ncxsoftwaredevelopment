@@ -8,14 +8,15 @@ serverPort = 9851
 class myServer(BaseHTTPRequestHandler):  
   def do_GET(self): #the do_GET method is inherited from BaseHTTPRequestHandler 
     self.send_response(200)    
-    self.send_header("Content-type", "text/html")
+    self.send_header("Content-type", "application/json")
     self.end_headers()
-    self.wfile.write(bytes("<html><head><title>https://testserver.com</title></head>", "utf-8"))
-    self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
-    self.wfile.write(bytes("<body>", "utf-8"))
-    self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
-    self.wfile.write(bytes("</body></html>", "utf-8"))
-    self.send_respose(400)
+  def do_POST(self):
+    self.send_respose(200)
+    self.send_header("Content-type", "application/json")
+    self.end_headers()
+    message = int(self.headers.get("Content-Length"))
+    post_body = self.rfile.read(message)
+    print(post_body)
 
 if __name__ == "__main__":        
   webServer = HTTPServer((hostName, serverPort), myServer)
